@@ -1,0 +1,37 @@
+body {
+  width: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title-section {
+    height: -webkit-fill-available;
+    background: linear-gradient(180deg, #59a0ff 0%, #9395c7 100%);
+
+}
+
+.title-section img {
+  width: 140px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 13em;
+}
+
+.title-section #typed {
+  padding-top: 1em;
+  font-size: 3em;
+  color: white;
+  display: block;
+  text-align: center;
+  font-family: 'Reenie Beanie', cursive;
+}
+
+.title-section .material-icons {
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 3em;
+  position: absolute;
+  bottom: 1em;
+  left: 48%;
+}

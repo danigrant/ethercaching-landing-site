@@ -5,14 +5,34 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="https://ethercaching.nyc3.digitaloceanspaces.com/diamond.png"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <title>Ethercaches</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="container">
+      <div class="section title-section">
+        <img class="animated fadeIn slower" id="logo" src="https://ethercaching.nyc3.digitaloceanspaces.com/diamond.png"/>
+        <div id="typed-strings">
+          <span>Treasure is all around you.<br>I would know.<br>I placed it there.</span>
+        </div>
+        <span class="animated fadeIn slower" id="typed"></span>
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="section info1-section"></div>
+      <div class="section map-section"></div>
+      <div class="section info2-section"></div>
+      <div class="section footer-section"></div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
     <script src="http://unpkg.com/react@16.0.0/umd/react.development.js"></script>
     <script src="http://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
     <script src="index.js"></script>
+    <script>
+      let typed = new Typed('#typed', { stringsElement: '#typed-strings', typeSpeed: 90 })
+    </script>
   </body>
 </html>

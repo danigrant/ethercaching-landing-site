@@ -4,7 +4,6 @@ body {
   /* font-family: Roboto, sans-serif; */
   font-family: serif;
   color: #3e3e3e;
-  cursor: none;
 }
 
 .typed-cursor {
@@ -99,8 +98,8 @@ h2 {
 .info-section .qr-code-image {
   width: 200px;
   position: relative;
-  bottom: 1em;
-  left: 3em;
+  bottom: -3em;
+  left: 7em;
 }
 
 .info-section .jack-image {

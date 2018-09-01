@@ -125,7 +125,11 @@ h2 {
     }
 
     .title-section img {
-      padding-top: 0;
+      padding-top: 2em;
+    }
+
+    .title-section i {
+      display: none;
     }
 
     .container {

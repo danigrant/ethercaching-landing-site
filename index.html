@@ -2,28 +2,73 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="https://ethercaching.nyc3.digitaloceanspaces.com/diamond.png"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <title>Ethercaches</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Ethercache Me</title>
   </head>
   <body>
-    <div class="container">
-      <div class="section title-section">
-        <img class="animated fadeIn slower" id="logo" src="https://ethercaching.nyc3.digitaloceanspaces.com/diamond.png"/>
-        <div id="typed-strings">
-          <span>Treasure is all around you.<br>I would know.<br>I placed it there.</span>
-        </div>
-        <span class="animated fadeIn slower" id="typed"></span>
-        <i class="material-icons">expand_more</i>
+    <div class="section title-section">
+      <img class="animated fadeIn slower" id="logo" src="https://ethercaching.nyc3.digitaloceanspaces.com/diamond.png"/>
+      <div id="typed-strings">
+        <span>Treasure is all around you.<br>I would know.<br>I put it there.</span>
       </div>
-      <div class="section info1-section"></div>
-      <div class="section map-section"></div>
-      <div class="section info2-section"></div>
-      <div class="section footer-section"></div>
+      <span class="animated fadeIn slower" id="typed"></span>
+      <div id="welcome-message"></div>
+      <i class="material-icons">expand_more</i>
+    </div>
+    <div class="section about-section">
+      <div class="container">
+        <p>There are ethercaches hidden in 10 cities around the world.</p>
+        <p>Do you think you can find one?</p>
+        <p>You'll know if you spot one - they are blue and white and gold all over.</p>
+        <p>Every ethercache keeps its own visitor book.</p>
+        <p>If you visit the ethercache, you can read notes left for you by former visitors.</p>
+        <p>And you can leave your own notes for future visitors.</p>
+        <p>Have fun.</p>
+        <p>And good luck.</p>
+        <img src="https://ethercaching.nyc3.digitaloceanspaces.com/heart.png" alt="heart">
+      </div>
+    </div>
+    <div class="map-section">
+      <div id="map" class="map">
+
+      </div>
+      <p>where to find an ethercache.</p>
+    </div>
+    <div class="section info-section">
+      <div class="container">
+        <div class="column">
+          <img class="qr-code-image" src="https://ethercaching.nyc3.digitaloceanspaces.com/qr-code-demo.png" alt="QR code">
+        </div>
+        <div class="column">
+          <h2>How do you know if you’ve found an ethercache?</h2>
+          <p>Mostly, you’ll feel it in your heart.</p>
+          <p>What does an ethercache look like? Ethercashes look like QR codes that look like the one on the right. They are about 6 inches by 6 inches and hidden in public places (as marked on the map above).</p>
+          <p>If you find one, it’s your lucky day. Scan its QR code to play.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <h2>What does this have to do “with the ether”?</h2>
+          <p>Ethercache visitor books are stored in a smart contract on Ethereum. When you write a message in an ethercache visitor book, that message is stored on Ethereum, making you forever a part of the ethercache history.</p>
+          <h2>What do you need to play?</h2>
+          <p>You’ll need a mobile browser that’s Ethereum enabled such as <a href="https://www.cipherbrowser.com/" target="_blank">Cipher</a>.</p>
+        </div>
+        <div class="column">
+          <img class="jack-image" src="https://ethercaching.nyc3.digitaloceanspaces.com/jack.png" alt="the joy of ethercaching">
+        </div>
+      </div>
+    </div>
+    <div class="section footer-section">
+      <p>There is treasure all around you.</p>
+      <p>Happy ethercaching!</p>
     </div>
 
 
@@ -32,7 +77,63 @@
     <script src="http://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
     <script src="index.js"></script>
     <script>
-      let typed = new Typed('#typed', { stringsElement: '#typed-strings', typeSpeed: 90 })
+      let typed = new Typed('#typed', { stringsElement: '#typed-strings', typeSpeed: 60 })
+
+      setTimeout(function() {
+        document.getElementById('welcome-message').innerHTML = '<p class="animated fadeIn slower">welcome to the game of ethercaching</p>'
+      }, 5250)
+    </script>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaWciLCJhIjoiY2o1N2k0YnhpMTAzazMzcjBtMTI0OHVnNyJ9.3bJAq3WMiY4Wd9bunJuvhQ';
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v9',
+        center: [1.004, 38.361],
+        zoom: 1.2
+      });
+
+      map.scrollZoom.disable();
+      map.addControl(new mapboxgl.NavigationControl());
+
+      map.on('load', function () {
+
+      map.addLayer({
+          "id": "points",
+          "type": "symbol",
+          "source": {
+              "type": "geojson",
+              "data": {
+                  "type": "FeatureCollection",
+                  "features": [{
+                      "type": "Feature",
+                      "geometry": {
+                          "type": "Point",
+                          "coordinates": [-77.03238901390978, 38.913188059745586]
+                      },
+                      "properties": {
+                          "icon": "marker"
+                      }
+                  }, {
+                      "type": "Feature",
+                      "geometry": {
+                          "type": "Point",
+                          "coordinates": [-122.414, 37.776]
+                      },
+                      "properties": {
+                          "icon": "marker"
+                      }
+                  }]
+              }
+          },
+          "layout": {
+              "icon-image": "{icon}-15",
+              "text-field": "{title}",
+              "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+              "text-offset": [0, 0.6],
+              "text-anchor": "top"
+          }
+      });
+  });
     </script>
   </body>
 </html>

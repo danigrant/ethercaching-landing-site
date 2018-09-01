@@ -1,20 +1,46 @@
 body {
   width: 100%;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: Roboto, sans-serif; */
+  font-family: serif;
+  color: #3e3e3e;
+  cursor: none;
+}
+
+.typed-cursor {
+    display: none;
+}
+
+a {
+  text-decoration: none;
+  color: #35c0ff;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .title-section {
-    height: -webkit-fill-available;
-    background: linear-gradient(180deg, #59a0ff 0%, #9395c7 100%);
+  height: -webkit-fill-available;
+  background: linear-gradient(180deg, #99c4ff 0%, #7377d2 100%);
+}
 
+#typed-strings {
+  display: none;
 }
 
 .title-section img {
   width: 140px;
   display: block;
   margin: 0 auto;
-  padding-top: 13em;
+  padding-top: 10em;
 }
 
 .title-section #typed {
@@ -26,6 +52,14 @@ body {
   font-family: 'Reenie Beanie', cursive;
 }
 
+.title-section p {
+  text-align: center;
+  color: #e4e4e4;
+  padding-top: 1em;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 2em;
+}
+
 .title-section .material-icons {
   display: block;
   text-align: center;
@@ -34,4 +68,92 @@ body {
   position: absolute;
   bottom: 1em;
   left: 48%;
+}
+
+.about-section {
+  padding: 5em;
+  font-size: 1.2em;
+}
+
+.about-section img {
+  width: 20px;
+  padding-bottom: 2em;
+}
+
+.map-section p {
+  color: #afafaf;
+  text-align: center;
+}
+
+.map {
+  width: 100%;
+  height: 600px;
+}
+
+.info-section .column {
+  display: inline-block;
+  width: 45%;
+  padding: 1em;
+}
+
+.info-section .qr-code-image {
+  width: 200px;
+  position: relative;
+  bottom: 1em;
+  left: 3em;
+}
+
+.info-section .jack-image {
+  width: 200px;
+}
+
+.footer-section {
+  padding: 3em;
+  text-align: center;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 1.5em;
+}
+
+.footer-section p {
+  margin: 0.5em;
+}
+
+/*  phones */
+
+@media only screen and (max-width: 600px) {
+    #typed {
+      font-size: 2em;
+    }
+
+    .title-section img {
+    }
+
+    .container {
+      width: 95%;
+    }
+
+    .section  {
+      padding: 2.5em;
+    }
+
+    .about-section img {
+      padding-bottom: 0em;
+    }
+
+    .info-section .column {
+      display: block;
+      width: 100%;
+      padding: 1em;
+    }
+
+    .jack-image {
+      display: none;
+    }
+
+    .info-section .qr-code-image {
+      width: 100%;
+      position: relative;
+      bottom: 1em;
+      left: 0;
+    }
 }
